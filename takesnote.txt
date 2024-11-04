@@ -1,0 +1,56 @@
+Đẩy một file lên và lưu vào một thư mục trên server 
+
+15/09
+1. Kết nối cơ sở dữ liệu
+    sử dụng hàm: mysqli($servername, $username, $password, $dbname)
+    các thông số hay dùng: $servername = "localhost"
+                           $username = "root" // phân quyền user trên hệ thống
+                           $password = ""
+                           $dbname = "67pm12"
+
+Ví dụ:
+    $conn = new mysqli("localhost", "root", "", "67pm12")
+    // check connection
+    if($conn->connect_error){
+        die("connection failed: ".$conn->connect_error)
+    }
+2. Các phương thức truy cập cơ sở dữ liệu
+    + Trả về tập kết quả của câu lệnh select:
+        $result = $conn->query("select * from categories"); // trả về dữ liệu của bảng categories
+    + Lấy về số lượng bản ghi:
+        $result->num_rows = 0: không có bản ghi nào
+    + Duyệt từng bản ghi:
+        $row = $result->fetch_assoc(): trả về bản ghi hiện tại,
+                                         di chuyển bản ghi đến con trỏ tiếp theo
+        khi gặp bản ghi cuối cùng sẽ không di chuyển được
+        $row[chỉ số]: chỉ số 0-> count-1
+        $row["tên trường"]: trả về dữ liệu dòng và cột có "tên trường"
+Ví dụ: đọc dữ liệu từ bảng categories
+
+$conn->query("câu lệnh insert, update, delete"): thực thi câu lệnh theo yêu cầu
+
+18/9
+Nội dung thực hành:
+    Hoàn thành phần thêm, sửa, xóa, hiển thị product
+Chú ý:
+    $sql = "insert into ..."
+    $conn->query(sql) or die("Error: ".$conn->error);
+
+Sửa và xóa thì thay sql tương ứng
+
+23/10
+
+Phân trang đối với PHP
+ví dụ:
+    $sobanghi = 5
+    $tongsobanghi = 21
+    $sql = "select * from product"
+    Trang 1 -> 1-5      $sql .="limit 0,5"
+    trang 2 -> 6-10            "limit 5,5"
+    trang 3 -> 11-15           "limit 10,5"
+    trang 4 -> 16-21           "limit 15,5"
+    trang 5 -> 21              "limit 20,5"
+    trang               limit ($trang )
+
+
+
