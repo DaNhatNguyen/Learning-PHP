@@ -30,6 +30,7 @@
                 </td>
                 <td>
                 <?php 
+                //git
                     if (!isset($_REQUEST["cat_id"])) {
                         $cat_id = 0;
                     } else {
