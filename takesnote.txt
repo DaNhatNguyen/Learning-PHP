@@ -52,5 +52,13 @@ ví dụ:
     trang 5 -> 21              "limit 20,5"
     trang               limit ($trang )
 
+7/11
+GIỎ HÀNG
 
+Cấu trúc giỏ hang
+$SESSION["cat_item"]
+    4=>("p_id"=>4, "code"=>4, "p_name"=>"samsung galaxy",
+        "...", "p_image"=>"anh.jpg"),
+    6=>("p_id"=>6, "code"=>6, "p_name"=>"samsung galaxy",
+        "...", "p_image"=>"anh.jpg"),
 
